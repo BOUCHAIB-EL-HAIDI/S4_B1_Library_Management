@@ -1,0 +1,13 @@
+# Enable URL rewriting
+RewriteEngine On
+
+# If the requested file or directory exists, serve it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Otherwise, redirect everything to index.php
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Optional: hide .php extensions (if you want URLs without .php)
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [L]
